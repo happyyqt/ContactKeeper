@@ -1,5 +1,4 @@
-import React, { useReducer, useContext, useEffect } from "react";
-import axios from "axios";
+import React, { useReducer } from "react";
 import alertContext from "./alertContext";
 import alertReducer from "./alertReducer";
 import { v4 as uuidv4 } from "uuid";

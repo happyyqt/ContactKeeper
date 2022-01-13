@@ -1,13 +1,14 @@
-import { STATES } from "mongoose";
 import React, { useState, useContext, useEffect } from "react";
 import authContext from "../../context/auth/authContext";
 import alertContext from "../../context/alert/alertContext";
+import { useNavigate } from "react-router-dom";
 
-const Register = () => {
+const Register = (props) => {
   const AlertContext = useContext(alertContext);
   const AuthContext = useContext(authContext);
+  const navigate = useNavigate();
   const { setAlert } = AlertContext;
-  const { error, register, clearErrors } = AuthContext;
+  const { error, register, clearErrors, isAuthenticated } = AuthContext;
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -16,18 +17,25 @@ const Register = () => {
   });
 
   useEffect(() => {
+    if (isAuthenticated) {
+      //redirect to home page when the user is authorized
+      console.log("redirect");
+      navigate("/");
+    }
     if (error === "User already exists") {
       setAlert(error, "danger");
       clearErrors();
     }
-  }, [error]);
+    //eslint-disable-next-line
+  }, [error, isAuthenticated, props.history]);
+
   const { name, email, password, password2 } = user;
 
   const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (name === "" || email === "" || password === "" || password2 === "") {
+    if (name === "" || email === "" || password === "") {
       setAlert("Please enter all fields", "danger");
     } else if (password !== password2) {
       setAlert("Please set the same password", "primary");

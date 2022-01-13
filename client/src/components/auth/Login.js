@@ -1,8 +1,14 @@
-import { STATES } from "mongoose";
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import authContext from "../../context/auth/authContext";
+import alertContext from "../../context/alert/alertContext";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = (props) => {
+  const AuthContext = useContext(authContext);
+  const AlertContext = useContext(alertContext);
+  const navigate = useNavigate();
+  const { login, error, isAuthenticated, clearErrors } = AuthContext;
+  const { setAlert } = AlertContext;
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -10,13 +16,34 @@ const Login = () => {
 
   const { email, password } = user;
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      //redirect to home page when the user is authorized
+      console.log("redirect");
+      navigate("/");
+    }
+    if (error === "Invalid Credentials") {
+      setAlert(error, "danger");
+      clearErrors();
+    }
+    //eslint-disable-next-line
+  }, [error, isAuthenticated, props.history]);
+
   const onChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("Login submit");
+    if (email === "" || password === "") {
+      setAlert("Please enter all fields", "danger");
+    } else {
+      login({
+        email,
+        password,
+      });
+      // setUser(null);
+    }
   };
 
   return (

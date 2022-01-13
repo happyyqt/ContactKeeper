@@ -12,6 +12,7 @@ const bcrypt = require("bcryptjs");
 // @ access Private
 router.get("/", auth, async (req, res) => {
   try {
+    // -password means exclude this field.
     const user = await User.findById(req.user.id).select("-password");
     res.json(user);
   } catch (err) {
