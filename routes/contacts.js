@@ -7,6 +7,7 @@ const Contact = require("../models/Contact");
 const config = require("config");
 const auth = require("../middleware/auth");
 const bcrypt = require("bcryptjs");
+
 // @ route POST api/contacts
 // @ desc  Get all users contacts
 // @ access Private
@@ -70,10 +71,11 @@ router.put("/:id", auth, async (req, res) => {
 
   try {
     let contact = await Contact.findById(req.params.id);
+    console.log("backend");
 
     if (!contact) return res.status(404).json({ msg: "Contact not found" });
 
-    // Make sure user owns contact
+    // Make sure user owns contact, why not _id?
     if (contact.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: "Not authorized" });
     }

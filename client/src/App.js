@@ -30,7 +30,11 @@ const App = () => {
                 <Routes>
                   <Route
                     path="/"
-                    element={<PrivateRoute component={<Home />} />}
+                    element={
+                      <PrivateRoute>
+                        <Home />
+                      </PrivateRoute>
+                    }
                   />
                   <Route path="/about" element={<About />} />
                   <Route path="/register" element={<Register />} />
