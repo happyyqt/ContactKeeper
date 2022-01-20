@@ -15,6 +15,7 @@ app.use("/api/contacts", require("./routes/contacts"));
 
 //Serve static assets in production
 if (process.env.NODE_ENV === "production") {
+  console.log("env");
   //set static folder
   app.use(express.static("client/build"));
   // send currentdir/client/build/index.html

@@ -19,7 +19,6 @@ const Login = (props) => {
   useEffect(() => {
     if (isAuthenticated) {
       //redirect to home page when the user is authorized
-      console.log("redirect");
       navigate("/");
     }
     if (error === "Invalid Credentials") {
