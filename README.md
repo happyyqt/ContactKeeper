@@ -2,7 +2,7 @@
 
 This is a React Application for managing contacts. Both Frontend and Backend are covered.
 
-Backend: <\br>
+Backend: <br />
 • Applied Node.js and Express framework <\br>
 • Implemented user authentication and authorization by JWT(Json Web Token) <\br>
 • managed contacts data utilizing MongoDB <\br>
