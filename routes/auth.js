@@ -39,6 +39,7 @@ router.post(
 
     try {
       let user = await User.findOne({ email });
+      console.log(user);
       if (!user) {
         return res.status(400).json({ msg: "Invalid Credentials" });
       }
@@ -48,11 +49,14 @@ router.post(
         return res.status(400).json({ msg: "Invalid Credentials" });
       }
 
+      console.log("ismatch in Login");
+
       const payload = {
         user: {
           id: user.id,
         },
       };
+
       // generate token
       jwt.sign(
         payload,
@@ -65,6 +69,7 @@ router.post(
           res.json({ token });
         }
       );
+      console.log("generate token finished");
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server Error");
