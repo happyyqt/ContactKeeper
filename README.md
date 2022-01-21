@@ -1,13 +1,14 @@
 # ContactKeeper
 
 This is a React Application for managing contacts. Both Frontend and Backend are covered.
-Backend: 
-• Applied Node.js and Express framework 
-• Implemented user authentication and authorization by JWT(Json Web Token)
-• managed contacts data utilizing MongoDB
-Frontend:
-• React hooks: UseEffect, UseState
-• Context API
-• REST API
-Unittest:
-• Jest
+
+Backend: <\br>
+• Applied Node.js and Express framework <\br>
+• Implemented user authentication and authorization by JWT(Json Web Token) <\br>
+• managed contacts data utilizing MongoDB <\br>
+Frontend: <\br>
+• React hooks: UseEffect, UseState <\br>
+• Context API <\br>
+• REST API <\br>
+Unittest: <\br>
+• Jest <\br>
