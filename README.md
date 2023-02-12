@@ -7,13 +7,16 @@ This is a React Application for managing contacts. Both Frontend and Backend are
 • Implemented user authentication and authorization by JWT(Json Web Token) <br />
 • managed contacts data utilizing MongoDB <br />
 ## Frontend: <br />
-• React hooks: UseEffect, UseState <br />
+• React hooks: UseEffect, UseState, useRef, useContext, useReducer <br />
 • Context API <br />
 • REST API <br />
-## Unittest: <br />
+## Unit-test: <br />
 • Jest <br />
 
 ## Sceen Shot: <br />
+### login
 ![](/images/login1.JPG)
+### register
 ![](/images/register1.JPG)
+### edit
 ![](/images/manage1.JPG)
