@@ -5,7 +5,7 @@ const path = require("./routes/contacts");
 
 connectDB();
 
-// Init Middleware
+// Init Middleware, it is a middleware to recognize incoming request object as a json Object
 app.use(express.json({ extended: false }));
 
 // Define Routes

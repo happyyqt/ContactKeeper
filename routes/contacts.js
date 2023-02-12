@@ -8,7 +8,7 @@ const config = require("config");
 const auth = require("../middleware/auth");
 const bcrypt = require("bcryptjs");
 
-// @ route POST api/contacts
+// @ route get api/contacts
 // @ desc  Get all users contacts
 // @ access Private
 router.get("/", auth, async (req, res) => {

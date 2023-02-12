@@ -29,5 +29,6 @@ const ContactSchema = mongoose.Schema({
     default: Date.now,
   },
 });
-
+// register the schema with mongoose. 
+// the model can be accessed by mongoose.model("contact")
 module.exports = mongoose.model("contact", ContactSchema);
