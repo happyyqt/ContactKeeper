@@ -1,12 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const { body, validationResult } = require("express-validator");
-const jwt = require("jsonwebtoken");
-const User = require("../models/User");
 const Contact = require("../models/Contact");
-const config = require("config");
 const auth = require("../middleware/auth");
-const bcrypt = require("bcryptjs");
 
 // @ route get api/contacts
 // @ desc  Get all users contacts

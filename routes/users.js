@@ -4,7 +4,6 @@ const router = express.Router();
 const { body, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
-// const config = require("config");
 const secret = process.env.SECRET;
 
 // @ route POST api/users
