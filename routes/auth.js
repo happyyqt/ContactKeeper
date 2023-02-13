@@ -6,6 +6,7 @@ const User = require("../models/User");
 const config = require("config");
 const auth = require("../middleware/auth");
 const bcrypt = require("bcryptjs");
+const secret = process.env.SECRET;
 
 // @ route GET api/auth
 // @ desc  Get logged in user
@@ -60,7 +61,7 @@ router.post(
       // generate token
       jwt.sign(
         payload,
-        config.get("jwtSecret"),
+        secret,
         {
           expiresIn: 36000,
         },

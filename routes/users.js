@@ -4,7 +4,8 @@ const router = express.Router();
 const { body, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
-const config = require("config");
+// const config = require("config");
+const secret = process.env.SECRET;
 
 // @ route POST api/users
 // @ desc Register a user
@@ -43,7 +44,7 @@ router.post(
       user.password = await bcrypt.hash(password, salt);
 
       await user.save();
-      
+
       const payload = {
         user: {
           id: user.id,
@@ -52,7 +53,7 @@ router.post(
       // generate token
       jwt.sign(
         payload,
-        config.get("jwtSecret"),
+        secret,
         {
           expiresIn: 36000,
         },
